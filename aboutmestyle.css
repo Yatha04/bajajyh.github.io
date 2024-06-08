@@ -1,0 +1,5 @@
+.progress {
+    height: 20px; /* Set a uniform height for all progress bars */
+    margin-bottom: 10px; /* Adds space between each progress bar */
+  }
+  
