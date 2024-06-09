@@ -187,6 +187,16 @@
         <div class="col-12 text-center">
             © 2024 Yatharth Bajaj
         </div>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="index.html">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="index.html">1</a></li>
+              <li class="page-item"><a class="page-link" href="about.html">2</a></li>
+              <li class="page-item"><a class="page-link" href="waph-bajajyh.html">3</a></li>
+              <li class="page-item"><a class="page-link" href="waph-bajajyh.html">Next</a></li>
+            </ul>
+          </nav>
+          
     </footer>
     </div>
 
@@ -280,37 +290,45 @@
         }
         fetchWeather();
 
-   // Function to get a cookie by name
-   function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) {
-      return parts.pop().split(';').shift();
-    }
-    return null;
-  }
 
-  // Function to set a cookie
-  function setCookie(name, value, daysToLive) {
-    const date = new Date();
-    date.setTime(date.getTime() + (daysToLive * 24 * 60 * 60 * 1000));
-    const expires = "expires=" + date.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
-  }
-
-  // Window load event
-  window.onload = function() {
-    const lastVisit = getCookie('lastVisit'); // Retrieve 'lastVisit' cookie
-    const now = new Date().toLocaleString();
-
-    if (lastVisit) {
-      alert(`Welcome back! Your last visit was ${lastVisit}`);
-    } else {
-      alert("Welcome to my homepage!");
-    }
-
-    setCookie('lastVisit', now, 7); // Set/update the 'lastVisit' cookie with 7 days expiration
-  }
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+        
+        // Function to set a cookie
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+            console.log('Cookie set:', document.cookie); // Debugging line to see what's set
+        }
+        
+        // Function to check the visit and update user greeting
+        function checkVisit() {
+            let visits = getCookie("visits");
+            console.log('Current visits from cookie:', visits); // Debugging line
+            if (visits === null) {
+                alert("Hi, welcome to my page");
+                visits = 1;
+            } else {
+                visits = parseInt(visits) + 1;
+                alert(`Hi, welcome back! This is your ${visits} time visiting.`);
+            }
+            setCookie("visits", visits, 365);
+        }
+        
+        // Ensure functions are loaded before running
+        document.addEventListener('DOMContentLoaded', function() {
+            checkVisit();
+        });
     </script>
 </body>
 </html>
