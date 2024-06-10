@@ -21,7 +21,7 @@
               </nav>
         </div>
         <div class="col-sm-10" name="col2">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary text-black">
                 <div class="container-fluid">
                   <a class="navbar-brand" href="#">Navbar:</a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,26 +60,26 @@
     </div>
         <!-- Header with Name and Contact Information -->
         <header class="row mb-4 bg-primary-subtle text-white rounded mt-3">
-            <div class="col-4">
+            <div class="col-4 text-black">
                 <img src="../bajajyh.github.io/images/headshot.jpg" alt="Yatharth Bajaj" class="profile-img" height="100" width="80">
             </div>
-            <div class="col-4">
+            <div class="col-4 text-black">
                 <p>Email: <a href="mailto:bajajyh@mail.uc.edu">bajajyh@mail.uc.edu</a><br><br>  LinkedIn: <a href="https://www.linkedin.com/in/yatharth-bajaj" target="_blank">Yatharth Bajaj</a></p>
             </div>
-            <div class="col-4">
+            <div class="col-4 text-black">
                 <p> Phone: +1 513-496-7772 <br><br>Resume: <a href="YatharthBajaj_Resume.pdf" download="Yatharth_Bajaj_Resume">Download My Resume</a></p>
             </div>
         </header>
 
 
         <section class="row mb-3 rounded">
-            <div class="col-8 bg-danger-subtle text-white rounded me-5">
+            <div class="col-8 bg-danger-subtle text-black rounded me-5">
                 <h1>About Me:</h1>
                 <p>My name is Yatharth Bajaj, I was born in a small town called Panipat in North India. I belong to a family of five, which includes my parents, my sister, and our dog. I love travelling and being active, I play a lot of sports and love to take part in adventure sports. I think my wish to explore the world and new cultures got me to choose a college in a new country this far from home.</p>
                 <p>In the last two years studying in the US, my journey has been a whirlwind of unforgettable adventures and learning experiences. I've not only explored various landscapes and cities but also delved into the vibrant campus life here. I joined several clubs that caught my interest and aligned with my passions, such as the Solar Car UC, where we work on designing and building solar-powered cars, and Revolution UC, a tech club that hosts hackathons. I also became a member of Alpha Lambda Delta (ALD), an honor society that recognizes academic excellence.</p>
                 <p>One of my most profound experiences was undertaking a co-op in South Carolina. Venturing out alone, this opportunity pushed me out of my comfort zone and allowed me to apply my academic knowledge in a real-world setting, enhancing both my professional and personal growth. Each of these experiences has broadened my understanding of the world and helped me forge lasting friendships with people from diverse backgrounds. Through these engagements, I've learned more about teamwork, innovation, and the importance of community, all while nurturing my adventurous spirit.</p>
             </div>
-            <div class="col-3 bg-dark-subtle text-white rounded">
+            <div class="col-3 bg-dark-subtle text-black rounded">
                 <h4>Programming Lanugages</h4>
                 <p><i>Python</i></p>
                 <div class="progress mb-2" style="height: 25px;"> 
@@ -109,7 +109,7 @@
         </section>
 
         <!--Experience Section-->
-        <section class="row mb-3 rounded">
+        <section class="row mb-3 rounded text-black">
             <h3 style="text-align: center;">Experiences</h3>
         </section>
         <section class="row mb-3 rounded">
@@ -151,14 +151,14 @@
     </section>
     <hr>
     <div class="row mb-3 rounded">
-        <div class="col-3">
+        <div class="col-3 text-white">
             <div id="emailContainer"><button onclick="showhideEmail()">Show my email</button></div>
             <div id="email" style="display:none;">Email: <a href="mailto:bajajyh@mail.uc.edu">bajajyh@mail.uc.edu</a></div>
             <div id="digital_clock"></div>
             <canvas id="analog-clock" width="150" height="150" style="background-color:#999;"></canvas>
             <script src="https://waph-uc.github.io/clock.js"></script>
         </div>
-        <div class="col-3">
+        <div class="col-3 text-white">
             <div id="todo-container">
                 <h6>To Do List:</h6>
                 <input type="text" id="todo-input" placeholder="Add a new task" />
@@ -166,13 +166,13 @@
                 <ul id="todo-list"></ul>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-3 text-white">
             <div id="jokeContainer">
                 <h2>Joke of the minute:</h2>
                 <p id="joke">Fetching a joke...</p>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-3 text-white">
             <div id="weatherContainer">
                 <h2>Current Weather:</h2>
                 <img id="weatherIcon" src="" alt="Weather icon" style="width: 50px; height: 50px;">
@@ -239,7 +239,7 @@
                 var li = document.createElement('li');
                 li.textContent = newTask;
                 document.getElementById('todo-list').appendChild(li);
-                input.value = ''; // Clear the input after adding
+                input.value = '';
             } else {
                 alert('Please enter a task.');
             }
@@ -289,46 +289,47 @@
                 });
         }
         fetchWeather();
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+            document.cookie = name + "=" + value + ";expires=" + expires.toUTCString() + ";path=/";
+        }
 
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+            document.cookie = name + "=" + value + ";expires=" + expires.toUTCString() + ";path=/";
+        }
 
         function getCookie(name) {
-            let nameEQ = name + "=";
-            let ca = document.cookie.split(';');
-            for (let i = 0; i < ca.length; i++) {
-                let c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1);
-                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            const cookieName = name + "=";
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                let cookie = cookies[i].trim();
+                if (cookie.indexOf(cookieName) === 0) {
+                    return cookie.substring(cookieName.length, cookie.length);
+                }
             }
             return null;
         }
-        
-        // Function to set a cookie
-        function setCookie(name, value, days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            let expires = "expires=" + date.toUTCString();
-            document.cookie = name + "=" + value + ";" + expires + ";path=/";
-            console.log('Cookie set:', document.cookie); // Debugging line to see what's set
-        }
-        
-        // Function to check the visit and update user greeting
-        function checkVisit() {
-            let visits = getCookie("visits");
-            console.log('Current visits from cookie:', visits); // Debugging line
-            if (visits === null) {
-                alert("Hi, welcome to my page");
-                visits = 1;
+        function displayWelcomeMessage() {
+            const username = getCookie("username");
+            const currentDate = new Date().toLocaleString();
+
+            if (!username) {
+                // First time visit
+                alert('Welcome to my homepage!');
+                setCookie("username", "YOURusername", 365); 
+                setCookie("lastVisitDate", currentDate, 365); 
             } else {
-                visits = parseInt(visits) + 1;
-                alert(`Hi, welcome back! This is your ${visits} time visiting.`);
+                // Revisit
+                const lastVisitDate = getCookie("lastVisitDate");
+                alert('Welcome back! Your last visit was ' + lastVisitDate);
+                setCookie("lastVisitDate", currentDate, 365);
             }
-            setCookie("visits", visits, 365);
         }
-        
-        // Ensure functions are loaded before running
-        document.addEventListener('DOMContentLoaded', function() {
-            checkVisit();
-        });
+
+        window.onload = displayWelcomeMessage;
     </script>
 </body>
 </html>
